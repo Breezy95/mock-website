@@ -1,0 +1,30 @@
+syntax="proto3";
+
+option go_package = "dist_raft/proto";
+
+
+service Example {
+	rpc increment(IncRequest) returns (IncResponse) {}
+	rpc decrement(DecRequest) returns (DecResponse) {}
+}
+
+message IncRequest {
+    uint64 val =1;
+
+}
+
+message IncResponse { 
+    uint64 incCounter = 1;
+}
+
+message DecRequest {
+    sint32 decVal = 1;
+}
+
+message DecResponse {
+    sint32 decCounter = 1;
+}
+
+
+
+
