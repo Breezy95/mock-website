@@ -1,6 +1,8 @@
-raftnode.pb.go: raftnode.proto
-	protoc raftnode.proto --go_out=plugins=grpc:. --go_opt=paths=source_relative
+final:
+	protoc --go_out=. --go_opt=paths=source_relative \
+--go-grpc_out=. --go-grpc_opt=paths=source_relative \
+comm.proto
 
-force:
-	rm -f raftnode.pb.go
-	make raftnode.pb.go
+clean:
+	rm *.pb.go
+	
