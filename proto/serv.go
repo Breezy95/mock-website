@@ -7,6 +7,8 @@ import(
 )
 
 type Server struct {
+	// Embed the unimplemented server
+UnimplementedChatServiceServer
 }
 
 func (s *Server) SayHello(ctx context.Context, message *Message) (*Message, error) {

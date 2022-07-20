@@ -1,10 +1,10 @@
-package application
+package main
 
 import (
 	"log"
 	"net"
 	"google.golang.org/grpc"
-	"mock-website/rpcmethod"
+	//"mock-website/rpcmethod"
 	"mock-website/proto"
 )
 
@@ -16,13 +16,10 @@ if err != nil{
 	log.Fatalf("Failed to listen on port 9000: %v", err)
 }
 
-s:= rpcmethod.Server{}
+s:= proto.Server{}
 rpcServer := grpc.NewServer()
 
 proto.RegisterChatServiceServer(rpcServer, &s)
-
-
-
 
 
 
