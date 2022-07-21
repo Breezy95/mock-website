@@ -1,19 +1,15 @@
 package main
 
-
-import(
-	"context"
+import (
+	"net/http"
 	"google.golang.org/grpc"
-	"log"
 	"mock-website/proto"
-	"reflect"
-	"fmt"
+	"log"
 )
 
-func main() {
-	var conn *grpc.ClientConn
-
+func indexHandler(w http.ResponseWriter, r *http.Request, conn *grpc.ClientConn ) {
 	conn,err := grpc.Dial(":9000", grpc.WithInsecure())
+
 	if err != nil{
 		log.Fatalf("Error when calling Hello: %s", err)
 	}
@@ -21,14 +17,11 @@ func main() {
 
 	c:= proto.NewChatServiceClient(conn)
 
-
-	//below this line we insert rpc methods
 	response, err := c.SayHello(context.Background(), &proto.Message{Body: "Hello From Client!"})
 
 	if err!= nil {
 		log.Fatalf("Error when calling SayHello function rpc %s",err)
 	}
 
-	log.Printf("Response from Server: %s", response.Body)
-
+	w.Write(byte[] "HELP ME")
 }

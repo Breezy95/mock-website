@@ -1,4 +1,4 @@
-package stateless_front
+package main
 
 import (
 	"net/http"
